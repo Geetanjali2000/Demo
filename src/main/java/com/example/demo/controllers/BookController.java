@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.Book;
@@ -20,8 +21,8 @@ public class BookController {
 	
 	//create
 	@PostMapping("createBook")
-	public Book createBook(Book book) {
-		
+	public Book createBook(@RequestBody Book book) {
+		System.out.println(book.getName());
 		return this.bookService.create(book);
 	}
 	
