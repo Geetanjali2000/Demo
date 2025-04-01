@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,18 +23,18 @@ public class BookController {
 	//create
 	@PostMapping("createBook")
 	public Book createBook(@RequestBody Book book) {
-		System.out.println(book.getName());
+		
 		return this.bookService.create(book);
 	}
 	
 	//GetAllBooks
-	@GetMapping("getAllBooks")
+	@QueryMapping("allBooks")
 	public List<Book> getAllBooks(){
 		return this.bookService.getAllBooks();
 	}
 	
 	//Get Single book
-	@GetMapping("getBook/{bookId}")
+	@QueryMapping("getBook/{bookId}")
 	public Book getBook(@PathVariable int bookId) {
 		return this.bookService.getBook(bookId);
 	}
